@@ -160,11 +160,13 @@ export default {
 
   mounted() {
     this.load()
-    chrome?.storage?.onChanged?.addListener?.(({ options = null }) => {
-      if (options && options.newValue.extension.darkMode !== this.options.extension.darkMode) {
-        this.options.extension.darkMode = options.newValue.extension.darkMode
-      }
-    })
+    if (chrome && chrome.storage && chrome.storage.onChanged && typeof chrome.storage.onChanged.addListener === 'function') {
+      chrome.storage.onChanged.addListener(({ options = null }) => {
+        if (options && options.newValue.extension.darkMode !== this.options.extension.darkMode) {
+          this.options.extension.darkMode = options.newValue.extension.darkMode
+        }
+      })
+    }
   },
 
   methods: {

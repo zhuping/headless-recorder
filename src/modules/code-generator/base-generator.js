@@ -31,7 +31,7 @@ export default class BaseGenerator {
 
   _getHeader() {
     let hdr = this._options.wrapAsync ? this._wrappedHeader : this._header
-    hdr = this._options.headless ? hdr : hdr?.replace('launch()', 'launch({ headless: false })')
+    hdr = this._options.headless ? hdr : (hdr ? hdr.replace('launch()', 'launch({ headless: false })') : hdr)
     return hdr
   }
 
@@ -46,7 +46,7 @@ export default class BaseGenerator {
 
     for (let i = 0; i < events.length; i++) {
       const { action, selector, value, href, keyCode, tagName, frameId, frameUrl } = events[i]
-      const escapedSelector = selector ? selector?.replace(/\\/g, '\\\\') : selector
+      const escapedSelector = selector ? selector.replace(/\\/g, '\\\\') : selector
 
       // we need to keep a handle on what frames events originate from
       this._setFrames(frameId, frameUrl)
@@ -70,7 +70,12 @@ export default class BaseGenerator {
             let skip = false
             for (let j = i - 1; j >= 0 && j >= i - 5; j--) {
               const prev = events[j]
-              if (prev?.action === 'keydown' && keys.includes(prev?.keyCode) && prev?.selector === selector) {
+              if (
+                prev &&
+                prev.action === 'keydown' &&
+                keys.includes(prev.keyCode) &&
+                prev.selector === selector
+              ) {
                 skip = true
                 break
               }
@@ -263,6 +268,7 @@ await element${this._screenshotCounter}.screenshot({ path: 'screenshot_${this._s
   }
 
   _escapeUserInput(value) {
-    return value?.replace(/\\/g, '\\\\')?.replace(/'/g, "\\'")
+    if (!value) return value
+    return value.replace(/\\/g, '\\\\').replace(/'/g, "\\'")
   }
 }

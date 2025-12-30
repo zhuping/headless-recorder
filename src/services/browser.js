@@ -70,7 +70,9 @@ export default {
   },
 
   openOptionsPage() {
-    chrome.runtime.openOptionsPage?.()
+    if (chrome.runtime && typeof chrome.runtime.openOptionsPage === 'function') {
+      chrome.runtime.openOptionsPage()
+    }
   },
 
   openHelpPage() {

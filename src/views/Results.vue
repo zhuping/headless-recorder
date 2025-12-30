@@ -68,7 +68,7 @@ export default {
   },
 
   mounted() {
-    if (!this.options?.code?.showPlaywrightFirst) {
+    if (!(this.options && this.options.code && this.options.code.showPlaywrightFirst)) {
       this.activeTab = headlessTypes.PUPPETEER
       this.tabs = this.tabs.reverse()
     }

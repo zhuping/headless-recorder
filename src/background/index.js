@@ -194,9 +194,13 @@ class Background {
       const generator = new CodeGenerator(options)
       const code = generator.generate(this._recording)
 
+      const showPlaywrightFirst =
+        options && options.code && options.code.showPlaywrightFirst
+          ? true
+          : false
       browser.sendTabMessage({
         action: 'CODE',
-        value: options?.code?.showPlaywrightFirst ? code.playwright : code.puppeteer,
+        value: showPlaywrightFirst ? code.playwright : code.puppeteer,
       })
     }
 

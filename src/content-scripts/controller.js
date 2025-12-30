@@ -34,7 +34,7 @@ export default class HeadlessController {
   }
 
   async handleBackgroundMessages(msg) {
-    if (!msg?.action) {
+    if (!msg || !msg.action) {
       return
     }
 
@@ -52,7 +52,7 @@ export default class HeadlessController {
         break
 
       case overlayActions.TOGGLE_OVERLAY:
-        msg?.value?.open ? this.overlay.mount(msg.value) : this.overlay.unmount()
+        msg && msg.value && msg.value.open ? this.overlay.mount(msg.value) : this.overlay.unmount()
         break
 
       case popupActions.STOP:

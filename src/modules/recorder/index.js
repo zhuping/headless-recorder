@@ -24,7 +24,7 @@ export default class Recorder {
       window.pptRecorderAddedControlListeners = true
     }
 
-    if (!window.document.pptRecorderAddedControlListeners && chrome.runtime?.onMessage) {
+    if (!window.document.pptRecorderAddedControlListeners && chrome.runtime && chrome.runtime.onMessage) {
       window.document.pptRecorderAddedControlListeners = true
     }
 
@@ -50,9 +50,11 @@ export default class Recorder {
     }
 
     try {
-      chrome.runtime && chrome?.runtime?.onMessage
-        ? chrome.runtime.sendMessage(msg)
-        : this._eventLog.push(msg)
+      if (chrome.runtime && chrome.runtime.onMessage) {
+        chrome.runtime.sendMessage(msg)
+      } else {
+        this._eventLog.push(msg)
+      }
     } catch (err) {
       console.debug('caught error', err)
     }

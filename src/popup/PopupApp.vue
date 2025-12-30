@@ -10,7 +10,7 @@
       @restart="restart(true)"
       :is-recording="isRecording"
       :is-paused="isPaused"
-      :dark-mode="options?.extension?.darkMode"
+      :dark-mode="options && options.extension && options.extension.darkMode"
       v-show="!showResultsTab && isRecording"
     />
 
