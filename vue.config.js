@@ -27,6 +27,13 @@ module.exports = {
           },
         },
       },
+      manifestTransformer(manifest) {
+        if (manifest.manifest_version === 3) {
+          const csp = "script-src 'self'; object-src 'self'"
+          manifest.content_security_policy = { extension_pages: csp }
+        }
+        return manifest
+      },
     },
   },
 }

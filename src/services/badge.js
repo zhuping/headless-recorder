@@ -7,8 +7,17 @@ const PAUSE_LOGO = './images/logo-yellow.png'
 
 export default {
   stop(text) {
-    chrome.browserAction.setIcon({ path: DEFAULT_LOGO })
-    chrome.browserAction.setBadgeBackgroundColor({ color: DEFAULT_COLOR })
+    const path = (p => {
+      try {
+        return chrome && chrome.runtime && typeof chrome.runtime.getURL === 'function'
+          ? chrome.runtime.getURL(p)
+          : p
+      } catch (e) {
+        return p
+      }
+    })
+    chrome.action.setIcon({ path: path(DEFAULT_LOGO) })
+    chrome.action.setBadgeBackgroundColor({ color: DEFAULT_COLOR })
     this.setText(text)
   },
 
@@ -17,19 +26,37 @@ export default {
   },
 
   setText(text) {
-    chrome.browserAction.setBadgeText({ text })
+    chrome.action.setBadgeText({ text })
   },
 
   pause() {
-    chrome.browserAction.setIcon({ path: PAUSE_LOGO })
+    const path = (p => {
+      try {
+        return chrome && chrome.runtime && typeof chrome.runtime.getURL === 'function'
+          ? chrome.runtime.getURL(p)
+          : p
+      } catch (e) {
+        return p
+      }
+    })
+    chrome.action.setIcon({ path: path(PAUSE_LOGO) })
   },
 
   start() {
-    chrome.browserAction.setIcon({ path: RECORDING_LOGO })
+    const path = (p => {
+      try {
+        return chrome && chrome.runtime && typeof chrome.runtime.getURL === 'function'
+          ? chrome.runtime.getURL(p)
+          : p
+      } catch (e) {
+        return p
+      }
+    })
+    chrome.action.setIcon({ path: path(RECORDING_LOGO) })
   },
 
   wait() {
-    chrome.browserAction.setBadgeBackgroundColor({ color: RECORDING_COLOR })
+    chrome.action.setBadgeBackgroundColor({ color: RECORDING_COLOR })
     this.setText('wait')
   },
 }

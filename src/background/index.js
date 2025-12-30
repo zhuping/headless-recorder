@@ -29,7 +29,7 @@ class Background {
   }
 
   init() {
-    chrome.extension.onConnect.addListener(port => {
+    chrome.runtime.onConnect.addListener(port => {
       port.onMessage.addListener(msg => this.handlePopupMessage(msg))
     })
   }
@@ -301,5 +301,8 @@ class Background {
   }
 }
 
-window.headlessRecorder = new Background()
-window.headlessRecorder.init()
+const headlessRecorder = new Background()
+headlessRecorder.init()
+if (typeof self !== 'undefined') {
+  self.headlessRecorder = headlessRecorder
+}

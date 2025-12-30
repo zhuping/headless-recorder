@@ -17,10 +17,15 @@ export default {
   },
 
   injectContentScript() {
-    return new Promise(function(resolve) {
-      chrome.tabs.executeScript({ file: CONTENT_SCRIPT_PATH, allFrames: false }, res =>
-        resolve(res)
-      )
+    return new Promise(function(resolve, reject) {
+      chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+        if (!tabs || !tabs.length) return reject(new Error('No active tab'))
+        const tab = tabs[0]
+        chrome.scripting.executeScript(
+          { target: { tabId: tab.id }, files: [CONTENT_SCRIPT_PATH] },
+          res => resolve(res)
+        )
+      })
     })
   },
 
@@ -44,7 +49,7 @@ export default {
   },
 
   getBackgroundBus() {
-    return chrome.extension.connect({ name: 'recordControls' })
+    return chrome.runtime.connect({ name: 'recordControls' })
   },
 
   openOptionsPage() {

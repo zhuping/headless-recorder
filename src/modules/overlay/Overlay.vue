@@ -88,6 +88,18 @@ import { directive } from 'vue-tippy'
 import 'tippy.js/dist/tippy.css'
 
 import { mapState, mapMutations } from 'vuex'
+ 
+const getURL = p => {
+  try {
+    return (typeof chrome !== 'undefined' &&
+      chrome.runtime &&
+      typeof chrome.runtime.getURL === 'function')
+      ? chrome.runtime.getURL(p)
+      : ''
+  } catch (e) {
+    return ''
+  }
+}
 
 export default {
   name: 'Overlay',
@@ -124,7 +136,8 @@ export default {
     ...mapMutations(['copy', 'stop', 'close', 'restart']),
 
     getIcon(icon) {
-      return browser.runtime.getURL(`icons/${this.darkMode ? 'dark' : 'light'}/${icon}.svg`)
+      const p = `icons/${this.darkMode ? 'dark' : 'light'}/${icon}.svg`
+      return getURL(p)
     },
 
     toggle() {
