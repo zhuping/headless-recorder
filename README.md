@@ -93,7 +93,7 @@ This project builds on existing open source projects (see [Credits](#-credits)) 
 After cloning the project, open the terminal and navigate to project root directory.
 
 ```bash
-$ npm i # install dependencies
+$ npm install --legacy-peer-deps # install dependencies
 
 $ npm run serve # run development mode
 
