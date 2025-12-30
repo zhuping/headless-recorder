@@ -1,38 +1,368 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App.vue it has the correct pristine / empty state 1`] = `
-<div
-  class="options"
+<main
+  class="bg-gray-lightest flex py-9 w-full h-screen overflow-auto dark:bg-black"
 >
   <div
-    class="container"
+    class="flex flex-col w-1/4 pt-12 pr-6"
   >
-    <div
-      class="header"
+    <a
+      href="https://www.checklyhq.com/docs/headless-recorder/"
+      target="_blank"
     >
-       Headless Recorder Options 
-      <small
-        class="saving-badge text-muted"
+      Docs
+    </a>
+    <a
+      href="https://github.com/checkly/headless-recorder"
+      target="_blank"
+    >
+      GitHub
+    </a>
+    <a
+      href="https://github.com/checkly/headless-recorder/blob/main/CHANGELOG.md"
+    >
+      Release notes
+    </a>
+    <a
+      href="https://chrome.google.com/webstore/detail/headless-recorder/djeegiggegleadkkbgopoonhjimgehda"
+      target="_blank"
+    >
+      Chrome Web Store
+    </a>
+  </div>
+  <div
+    class="flex flex-col w-1/2"
+  >
+    <header
+      class="flex flex-row justify-between items-center mb-3.5"
+    >
+      <div
+        class="flex items-baseline"
+      >
+        <h1
+          class="text-blue text-2xl font-bold mr-1"
+        >
+           Headless Recorder 
+        </h1>
+        <span
+          class="text-gray-dark dark:text-gray-light text-sm"
+        >
+          v1.1.0
+        </span>
+      </div>
+      <span
+        class="text-gray-darkest dark:text-white text-base font-semibold"
+        role="alert"
         style="display: none;"
       >
-         Saving... 
-      </small>
-    </div>
-    <!--v-if-->
-    <div
-      class="footer"
-    >
-       sponsored by 
-      <a
-        href="https://checklyhq.com"
-        target="_blank"
+        Saving...
+      </span>
+    </header>
+    <section>
+      <h2>
+        Recorder
+      </h2>
+      <label
+        for="custom-data-attribute"
       >
-        <img
-          alt=""
-          src=""
+        Custom data attribute
+      </label>
+      <div
+        class="mb-6"
+      >
+        <input
+          class="w-full placeholder-gray-darkish bg-gray-lighter h-7 rounded px-2 mb-2 text-sm"
+          id="custom-data-attribute"
+          placeholder="your custom data-* attribute"
+          type="text"
         />
-      </a>
-    </div>
+        <p>
+           Define an attribute that we'll attempt to use when selecting the elements, i.e "data-custom". This is handy when React or Vue based apps generate random class names. 
+        </p>
+        <p>
+          <span
+            aria-label="siren"
+            role="img"
+          >
+            🚨
+          </span>
+          <span
+            class="ml-1 font-bold text-black-shady dark:text-white"
+          >
+            When 
+            <span
+              class="italic"
+            >
+              "custom data attribute"
+            </span>
+              is set, it will take precedence from over any other selector (even ID) 
+          </span>
+        </p>
+      </div>
+      <div>
+        <label>
+          Set key code
+        </label>
+        <div
+          class="mb-2"
+        >
+          <button
+            class="font-semibold text-xs text-gray-darkest inline-flex justify-center items-center rounded-sm p-2 text-gray-darkest bg-blue hover:bg-blue-dark font-semibold text-white text-sm"
+          >
+            
+            Record Key Stroke
+            
+          </button>
+          <span
+            class="text-gray-dark dark:text-gray-light text-sm ml-3"
+          >
+            9
+          </span>
+        </div>
+        <p>
+           What key will be used for capturing input changes. The value here is the key code. This will not handle multiple keys. 
+        </p>
+      </div>
+    </section>
+    <section>
+      <h2>
+        Generator
+      </h2>
+      <div
+        class="flex items-center mb-3"
+      >
+        <button
+          aria-checked="false"
+          class="bg-gray relative inline-flex flex-shrink-0 h-4 w-8 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue"
+          role="switch"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="translate-x-0 m-px pointer-events-none inline-block h-2.5 w-2.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          />
+        </button>
+        <span
+          class="ml-4"
+        >
+          <span
+            class="text-sm text-gray-dark dark:text-gray-light"
+          >
+            
+             Wrap code in async function 
+            
+          </span>
+        </span>
+      </div>
+      <div
+        class="flex items-center mb-3"
+      >
+        <button
+          aria-checked="false"
+          class="bg-blue relative inline-flex flex-shrink-0 h-4 w-8 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue"
+          role="switch"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="translate-x-4 m-px pointer-events-none inline-block h-2.5 w-2.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          />
+        </button>
+        <span
+          class="ml-4"
+        >
+          <span
+            class="text-sm text-gray-dark dark:text-gray-light"
+          >
+            
+             Set 
+            <code>
+              headless
+            </code>
+             in playwright/puppeteer launch options 
+            
+          </span>
+        </span>
+      </div>
+      <div
+        class="flex items-center mb-3"
+      >
+        <button
+          aria-checked="false"
+          class="bg-blue relative inline-flex flex-shrink-0 h-4 w-8 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue"
+          role="switch"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="translate-x-4 m-px pointer-events-none inline-block h-2.5 w-2.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          />
+        </button>
+        <span
+          class="ml-4"
+        >
+          <span
+            class="text-sm text-gray-dark dark:text-gray-light"
+          >
+            
+             Add 
+            <code>
+              waitForNavigation
+            </code>
+             lines on navigation 
+            
+          </span>
+        </span>
+      </div>
+      <div
+        class="flex items-center mb-3"
+      >
+        <button
+          aria-checked="false"
+          class="bg-blue relative inline-flex flex-shrink-0 h-4 w-8 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue"
+          role="switch"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="translate-x-4 m-px pointer-events-none inline-block h-2.5 w-2.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          />
+        </button>
+        <span
+          class="ml-4"
+        >
+          <span
+            class="text-sm text-gray-dark dark:text-gray-light"
+          >
+            
+             Add 
+            <code>
+              waitForSelector
+            </code>
+             lines before every 
+            <code>
+              page.click()
+            </code>
+            
+          </span>
+        </span>
+      </div>
+      <div
+        class="flex items-center mb-3"
+      >
+        <button
+          aria-checked="false"
+          class="bg-blue relative inline-flex flex-shrink-0 h-4 w-8 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue"
+          role="switch"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="translate-x-4 m-px pointer-events-none inline-block h-2.5 w-2.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          />
+        </button>
+        <span
+          class="ml-4"
+        >
+          <span
+            class="text-sm text-gray-dark dark:text-gray-light"
+          >
+            
+             Add blank lines between code blocks 
+            
+          </span>
+        </span>
+      </div>
+      <div
+        class="flex items-center mb-3"
+      >
+        <button
+          aria-checked="false"
+          class="bg-blue relative inline-flex flex-shrink-0 h-4 w-8 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue"
+          role="switch"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="translate-x-4 m-px pointer-events-none inline-block h-2.5 w-2.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          />
+        </button>
+        <span
+          class="ml-4"
+        >
+          <span
+            class="text-sm text-gray-dark dark:text-gray-light"
+          >
+            
+             Show Playwright tab first 
+            
+          </span>
+        </span>
+      </div>
+    </section>
+    <section>
+      <h2
+        class=""
+      >
+        Extension
+      </h2>
+      <div
+        class="flex items-center mb-3"
+      >
+        <button
+          aria-checked="false"
+          class="bg-gray relative inline-flex flex-shrink-0 h-4 w-8 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue"
+          role="switch"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="translate-x-0 m-px pointer-events-none inline-block h-2.5 w-2.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          />
+        </button>
+        <span
+          class="ml-4"
+        >
+          <span
+            class="text-sm text-gray-dark dark:text-gray-light"
+          >
+            
+             Use Dark Mode false
+            
+          </span>
+        </span>
+      </div>
+      <div
+        class="flex items-center mb-3"
+      >
+        <button
+          aria-checked="false"
+          class="bg-blue relative inline-flex flex-shrink-0 h-4 w-8 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue"
+          role="switch"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="translate-x-4 m-px pointer-events-none inline-block h-2.5 w-2.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+          />
+        </button>
+        <span
+          class="ml-4"
+        >
+          <span
+            class="text-sm text-gray-dark dark:text-gray-light"
+          >
+            
+             Allow recording of usage telemetry 
+            
+          </span>
+        </span>
+      </div>
+      <p>
+         We only record clicks for basic product development, no website content or input data. Data is never, ever shared with 3rd parties. 
+      </p>
+    </section>
   </div>
-</div>
+</main>
 `;

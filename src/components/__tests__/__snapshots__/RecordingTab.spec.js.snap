@@ -1,328 +1,315 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RecordingTab.vue it has the correct pristine / empty state 1`] = `
-<div
-  class="tab recording-tab"
+<section
+  class="flex flex-col items-center rounded-md pt-8 h-full"
 >
   <div
-    class="content"
+    class="flex text-2xl justify-center items-center text-red font-semibold animate-pulse w-1/3"
+    data-test-id="recording-badge"
+    v-show="false"
+  >
+    Recording...
+  </div>
+  <p
+    class="text-gray-dark text-sm text-center w-72 dark:text-gray-light"
+  >
+     Headless recorder currently recording your browser events. 
+  </p>
+  <button
+    class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark p-12 mt-10"
+  >
+    
+    <div
+      class="bg-gray-darkest rounded h-16 w-16 dark:bg-white"
+    />
+    
+  </button>
+  <div
+    class="flex mt-13 mb-8 items-center justify-center"
   >
     <div
-      class="empty"
+      class="flex flex-col items-center justify-center mr-10"
     >
-      <img
-        alt="desert"
-        src=""
-        width="0"
-      />
-      <h3>
-        No recorded events yet
-      </h3>
-      <p
-        class="text-muted"
+      <button
+        class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark btn-medium flex flex-col items-center justify-center"
       >
-        Click record to begin
-      </p>
-      <div
-        class="nag-cta"
+        
+        <img
+          alt="resume recording"
+          class="w-10 h-10"
+          src="/icons/light/play.svg"
+          style="display: none;"
+        />
+        <img
+          alt="pause recording"
+          class="w-10 h-10"
+          src="/icons/light/pause.svg"
+        />
+        
+      </button>
+      <span
+        class="mt-2 text-sm font-semibold text-gray-new"
       >
-        <a
-          href="https://checklyhq.com/headless-recorder"
-          target="_blank"
-        >
-          Puppeteer Recorder is now 
-          <strong>
-            Headless Recorder
-          </strong>
-           and supports Playwright →
-        </a>
-      </div>
+        PAUSE
+      </span>
     </div>
     <div
-      class="events"
-      style="display: none;"
+      class="flex flex-col items-center justify-center"
     >
-      <p
-        class="text-muted text-center loading"
-      >
-         Waiting for events 
-      </p>
-      <ul
-        class="event-list"
+      <button
+        class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark btn-medium flex flex-col items-center justify-center"
       >
         
+        <img
+          alt="restart recording"
+          class="w-10 h-10"
+          src="/icons/light/sync.svg"
+        />
         
-      </ul>
+      </button>
+      <span
+        class="mt-2 text-sm font-semibold text-gray-new"
+      >
+        RESTART
+      </span>
     </div>
   </div>
-</div>
+</section>
 `;
 
 exports[`RecordingTab.vue it has the correct recording DOM events state 1`] = `
-<div
-  class="tab recording-tab"
+<section
+  class="flex flex-col items-center rounded-md pt-8 h-full"
+  liveevents="[object Object]"
 >
   <div
-    class="content"
+    class="flex text-2xl justify-center items-center text-red font-semibold animate-pulse w-1/3"
+    data-test-id="recording-badge"
+    v-show="true"
+  >
+    Recording...
+  </div>
+  <p
+    class="text-gray-dark text-sm text-center w-72 dark:text-gray-light"
+  >
+     Headless recorder currently recording your browser events. 
+  </p>
+  <button
+    class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark p-12 mt-10"
+  >
+    
+    <div
+      class="bg-gray-darkest rounded h-16 w-16 dark:bg-white"
+    />
+    
+  </button>
+  <div
+    class="flex mt-13 mb-8 items-center justify-center"
   >
     <div
-      class="empty"
-      style="display: none;"
+      class="flex flex-col items-center justify-center mr-10"
     >
-      <img
-        alt="desert"
-        src=""
-        width="0"
-      />
-      <h3>
-        No recorded events yet
-      </h3>
-      <p
-        class="text-muted"
+      <button
+        class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark btn-medium flex flex-col items-center justify-center"
       >
-        Click record to begin
-      </p>
-      <div
-        class="nag-cta"
-        style="display: none;"
+        
+        <img
+          alt="resume recording"
+          class="w-10 h-10"
+          src="/icons/light/play.svg"
+          style="display: none;"
+        />
+        <img
+          alt="pause recording"
+          class="w-10 h-10"
+          src="/icons/light/pause.svg"
+        />
+        
+      </button>
+      <span
+        class="mt-2 text-sm font-semibold text-gray-new"
       >
-        <a
-          href="https://checklyhq.com/headless-recorder"
-          target="_blank"
-        >
-          Puppeteer Recorder is now 
-          <strong>
-            Headless Recorder
-          </strong>
-           and supports Playwright →
-        </a>
-      </div>
+        PAUSE
+      </span>
     </div>
     <div
-      class="events"
+      class="flex flex-col items-center justify-center"
     >
-      <p
-        class="text-muted text-center loading"
-        style="display: none;"
-      >
-         Waiting for events 
-      </p>
-      <ul
-        class="event-list"
+      <button
+        class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark btn-medium flex flex-col items-center justify-center"
       >
         
-        <li
-          class="event-list-item"
-        >
-          <div
-            class="event-label"
-          >
-            1.
-          </div>
-          <div
-            class="event-description"
-          >
-            <div
-              class="event-action"
-            >
-              click
-            </div>
-            <div
-              class="event-props text-muted"
-            >
-              .main &gt; a.link
-            </div>
-          </div>
-        </li>
+        <img
+          alt="restart recording"
+          class="w-10 h-10"
+          src="/icons/light/sync.svg"
+        />
         
-      </ul>
+      </button>
+      <span
+        class="mt-2 text-sm font-semibold text-gray-new"
+      >
+        RESTART
+      </span>
     </div>
   </div>
-</div>
+</section>
 `;
 
 exports[`RecordingTab.vue it has the correct recording Puppeteer custom events state 1`] = `
-<div
-  class="tab recording-tab"
+<section
+  class="flex flex-col items-center rounded-md pt-8 h-full"
+  liveevents="[object Object],[object Object],[object Object]"
 >
   <div
-    class="content"
+    class="flex text-2xl justify-center items-center text-red font-semibold animate-pulse w-1/3"
+    data-test-id="recording-badge"
+    v-show="true"
+  >
+    Recording...
+  </div>
+  <p
+    class="text-gray-dark text-sm text-center w-72 dark:text-gray-light"
+  >
+     Headless recorder currently recording your browser events. 
+  </p>
+  <button
+    class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark p-12 mt-10"
+  >
+    
+    <div
+      class="bg-gray-darkest rounded h-16 w-16 dark:bg-white"
+    />
+    
+  </button>
+  <div
+    class="flex mt-13 mb-8 items-center justify-center"
   >
     <div
-      class="empty"
-      style="display: none;"
+      class="flex flex-col items-center justify-center mr-10"
     >
-      <img
-        alt="desert"
-        src=""
-        width="0"
-      />
-      <h3>
-        No recorded events yet
-      </h3>
-      <p
-        class="text-muted"
+      <button
+        class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark btn-medium flex flex-col items-center justify-center"
       >
-        Click record to begin
-      </p>
-      <div
-        class="nag-cta"
-        style="display: none;"
+        
+        <img
+          alt="resume recording"
+          class="w-10 h-10"
+          src="/icons/light/play.svg"
+          style="display: none;"
+        />
+        <img
+          alt="pause recording"
+          class="w-10 h-10"
+          src="/icons/light/pause.svg"
+        />
+        
+      </button>
+      <span
+        class="mt-2 text-sm font-semibold text-gray-new"
       >
-        <a
-          href="https://checklyhq.com/headless-recorder"
-          target="_blank"
-        >
-          Puppeteer Recorder is now 
-          <strong>
-            Headless Recorder
-          </strong>
-           and supports Playwright →
-        </a>
-      </div>
+        PAUSE
+      </span>
     </div>
     <div
-      class="events"
+      class="flex flex-col items-center justify-center"
     >
-      <p
-        class="text-muted text-center loading"
-        style="display: none;"
-      >
-         Waiting for events 
-      </p>
-      <ul
-        class="event-list"
+      <button
+        class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark btn-medium flex flex-col items-center justify-center"
       >
         
-        <li
-          class="event-list-item"
-        >
-          <div
-            class="event-label"
-          >
-            1.
-          </div>
-          <div
-            class="event-description"
-          >
-            <div
-              class="event-action"
-            >
-              goto*
-            </div>
-            <div
-              class="event-props text-muted"
-            >
-              http://example.com
-            </div>
-          </div>
-        </li>
-        <li
-          class="event-list-item"
-        >
-          <div
-            class="event-label"
-          >
-            2.
-          </div>
-          <div
-            class="event-description"
-          >
-            <div
-              class="event-action"
-            >
-              viewport*
-            </div>
-            <div
-              class="event-props text-muted"
-            >
-              width: 1280, height: 800
-            </div>
-          </div>
-        </li>
-        <li
-          class="event-list-item"
-        >
-          <div
-            class="event-label"
-          >
-            3.
-          </div>
-          <div
-            class="event-description"
-          >
-            <div
-              class="event-action"
-            >
-              navigation*
-            </div>
-            <div
-              class="event-props text-muted"
-            />
-          </div>
-        </li>
+        <img
+          alt="restart recording"
+          class="w-10 h-10"
+          src="/icons/light/sync.svg"
+        />
         
-      </ul>
+      </button>
+      <span
+        class="mt-2 text-sm font-semibold text-gray-new"
+      >
+        RESTART
+      </span>
     </div>
   </div>
-</div>
+</section>
 `;
 
 exports[`RecordingTab.vue it has the correct waiting for events state 1`] = `
-<div
-  class="tab recording-tab"
+<section
+  class="flex flex-col items-center rounded-md pt-8 h-full"
 >
   <div
-    class="content"
+    class="flex text-2xl justify-center items-center text-red font-semibold animate-pulse w-1/3"
+    data-test-id="recording-badge"
+    v-show="true"
+  >
+    Recording...
+  </div>
+  <p
+    class="text-gray-dark text-sm text-center w-72 dark:text-gray-light"
+  >
+     Headless recorder currently recording your browser events. 
+  </p>
+  <button
+    class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark p-12 mt-10"
+  >
+    
+    <div
+      class="bg-gray-darkest rounded h-16 w-16 dark:bg-white"
+    />
+    
+  </button>
+  <div
+    class="flex mt-13 mb-8 items-center justify-center"
   >
     <div
-      class="empty"
-      style="display: none;"
+      class="flex flex-col items-center justify-center mr-10"
     >
-      <img
-        alt="desert"
-        src=""
-        width="0"
-      />
-      <h3>
-        No recorded events yet
-      </h3>
-      <p
-        class="text-muted"
+      <button
+        class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark btn-medium flex flex-col items-center justify-center"
       >
-        Click record to begin
-      </p>
-      <div
-        class="nag-cta"
-        style="display: none;"
+        
+        <img
+          alt="resume recording"
+          class="w-10 h-10"
+          src="/icons/light/play.svg"
+          style="display: none;"
+        />
+        <img
+          alt="pause recording"
+          class="w-10 h-10"
+          src="/icons/light/pause.svg"
+        />
+        
+      </button>
+      <span
+        class="mt-2 text-sm font-semibold text-gray-new"
       >
-        <a
-          href="https://checklyhq.com/headless-recorder"
-          target="_blank"
-        >
-          Puppeteer Recorder is now 
-          <strong>
-            Headless Recorder
-          </strong>
-           and supports Playwright →
-        </a>
-      </div>
+        PAUSE
+      </span>
     </div>
     <div
-      class="events"
+      class="flex flex-col items-center justify-center"
     >
-      <p
-        class="text-muted text-center loading"
-      >
-         Waiting for events 
-      </p>
-      <ul
-        class="event-list"
+      <button
+        class="p-2 bg-white rounded-full border-gray-light border-solid border-4 hover:bg-gray-lightest dark:hover:bg-gray-hover dark:bg-black-shady dark:border-gray-dark btn-medium flex flex-col items-center justify-center"
       >
         
+        <img
+          alt="restart recording"
+          class="w-10 h-10"
+          src="/icons/light/sync.svg"
+        />
         
-      </ul>
+      </button>
+      <span
+        class="mt-2 text-sm font-semibold text-gray-new"
+      >
+        RESTART
+      </span>
     </div>
   </div>
-</div>
+</section>
 `;

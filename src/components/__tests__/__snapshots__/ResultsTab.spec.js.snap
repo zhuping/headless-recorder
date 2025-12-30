@@ -2,43 +2,27 @@
 
 exports[`RecordingTab.vue it has the correct pristine / empty state 1`] = `
 <div
-  class="tab results-tab"
+  class="flex flex-col bg-blue-light overflow-hidden mt-4 h-100 dark:bg-black"
+  data-test-id="results-tab"
 >
   <div
-    class="tabs"
+    class="flex flex-row"
   >
     
     <button
-      class="tabs__action selected"
+      class="w-1/2 p-2 font-semibold text-xs capitalize rounded-t bg-black text-gray-lightest dark:bg-black-shady"
     >
-      <!--v-if-->
-      <img
-        src=""
-        width="16"
-      />
-      <span
-        class="tabs__action--text"
-      >
-        puppeteer
-      </span>
+      playwright
     </button>
     <button
-      class="tabs__action"
+      class="w-1/2 p-2 font-semibold text-xs capitalize rounded-t text-gray-dark dark:text-gray"
     >
-      <span>
-        🎭
-      </span>
-      <!--v-if-->
-      <span
-        class="tabs__action--text"
-      >
-        playwright
-      </span>
+      puppeteer
     </button>
     
   </div>
   <div
-    class="content"
+    class="sc p-2 bg-black dark:bg-black-shady"
   >
     <pre>
               
@@ -54,61 +38,32 @@ exports[`RecordingTab.vue it has the correct pristine / empty state 1`] = `
 
 exports[`RecordingTab.vue it show a code box when there is code 1`] = `
 <div
-  class="tab results-tab"
+  class="flex flex-col bg-blue-light overflow-hidden mt-4 h-100 dark:bg-black"
+  data-test-id="results-tab"
 >
   <div
-    class="tabs"
+    class="flex flex-row"
   >
     
     <button
-      class="tabs__action selected"
+      class="w-1/2 p-2 font-semibold text-xs capitalize rounded-t bg-black text-gray-lightest dark:bg-black-shady"
     >
-      <!--v-if-->
-      <img
-        src=""
-        width="16"
-      />
-      <span
-        class="tabs__action--text"
-      >
-        puppeteer
-      </span>
+      playwright
     </button>
     <button
-      class="tabs__action"
+      class="w-1/2 p-2 font-semibold text-xs capitalize rounded-t text-gray-dark dark:text-gray"
     >
-      <span>
-        🎭
-      </span>
-      <!--v-if-->
-      <span
-        class="tabs__action--text"
-      >
-        playwright
-      </span>
+      puppeteer
     </button>
     
   </div>
   <div
-    class="content"
+    class="sc p-2 bg-black dark:bg-black-shady"
   >
     <pre>
               
-      <code
-        class="javascript hljs"
-      >
-        <span
-          class="hljs-keyword"
-        >
-          await
-        </span>
-         page.click(
-        <span
-          class="hljs-string"
-        >
-          '.class'
-        </span>
-        )
+      <code>
+        No code yet...
       </code>
       
       
