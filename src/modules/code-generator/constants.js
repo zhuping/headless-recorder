@@ -13,6 +13,7 @@ export const eventsToRecord = {
   DBLCLICK: 'dblclick',
   CHANGE: 'change',
   KEYDOWN: 'keydown',
+  FOCUSOUT: 'focusout',
   SELECT: 'select',
   SUBMIT: 'submit',
   LOAD: 'load',

@@ -10,6 +10,7 @@ export const defaults = {
   dataAttribute: '',
   showPlaywrightFirst: true,
   keyCode: 9,
+  captureKeys: [9, 13],
 }
 
 export default class BaseGenerator {
@@ -52,8 +53,31 @@ export default class BaseGenerator {
 
       switch (action) {
         case 'keydown':
-          if (keyCode === this._options.keyCode) {
-            this._blocks.push(this._handleKeyDown(escapedSelector, value, keyCode))
+          {
+            const keys = Array.isArray(this._options.captureKeys) && this._options.captureKeys.length
+              ? this._options.captureKeys
+              : [this._options.keyCode]
+            if (keys.includes(keyCode)) {
+              this._blocks.push(this._handleKeyDown(escapedSelector, value, keyCode))
+            }
+          }
+          break
+        case 'focusout':
+          {
+            const keys = Array.isArray(this._options.captureKeys) && this._options.captureKeys.length
+              ? this._options.captureKeys
+              : [this._options.keyCode]
+            let skip = false
+            for (let j = i - 1; j >= 0 && j >= i - 5; j--) {
+              const prev = events[j]
+              if (prev?.action === 'keydown' && keys.includes(prev?.keyCode) && prev?.selector === selector) {
+                skip = true
+                break
+              }
+            }
+            if (!skip) {
+              this._blocks.push(this._handleKeyDown(escapedSelector, value, keyCode))
+            }
           }
           break
         case 'click':
@@ -171,6 +195,16 @@ export default class BaseGenerator {
     this._screenshotCounter += 1
 
     if (value) {
+      if (typeof value === 'object' && value.x && value.y && value.width && value.height) {
+        const x = parseInt(value.x, 10)
+        const y = parseInt(value.y, 10)
+        const width = parseInt(value.width, 10)
+        const height = parseInt(value.height, 10)
+        return new Block(this._frameId, {
+          type: headlessActions.SCREENSHOT,
+          value: `await ${this._frame}.screenshot({ path: 'screenshot_${this._screenshotCounter}.png', clip: { x: ${x}, y: ${y}, width: ${width}, height: ${height} } })`,
+        })
+      }
       return new Block(this._frameId, {
         type: headlessActions.SCREENSHOT,
         value: `const element${this._screenshotCounter} = await page.$('${value}')
@@ -180,7 +214,7 @@ await element${this._screenshotCounter}.screenshot({ path: 'screenshot_${this._s
 
     return new Block(this._frameId, {
       type: headlessActions.SCREENSHOT,
-      value: `await ${this._frame}.screenshot({ path: 'screenshot_${this._screenshotCounter}.png', fullPage: true })`,
+      value: `await ${this._frame}.screenshot({ path: 'screenshot_${this._screenshotCounter}.png' })`,
     })
   }
 

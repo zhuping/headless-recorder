@@ -160,7 +160,7 @@ export default {
 
   mounted() {
     this.load()
-    chrome.storage.onChanged.addListener(({ options = null }) => {
+    chrome?.storage?.onChanged?.addListener?.(({ options = null }) => {
       if (options && options.newValue.extension.darkMode !== this.options.extension.darkMode) {
         this.options.extension.darkMode = options.newValue.extension.darkMode
       }

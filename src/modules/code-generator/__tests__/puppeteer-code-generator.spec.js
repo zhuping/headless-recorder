@@ -1,5 +1,5 @@
 import PuppeteerCodeGenerator from '../puppeteer'
-import { headlessActions } from '@/services/constants'
+import { headlessActions } from '@/modules/code-generator/constants'
 
 describe('PuppeteerCodeGenerator', () => {
   test('it should generate nothing when there are no events', () => {
@@ -153,5 +153,35 @@ describe('PuppeteerCodeGenerator', () => {
     const result = codeGenerator._parseEvents(events)
 
     expect(result).toContain("await page.click('button.\\\\hello\\\\')")
+  })
+
+  test('it generates input on Enter key', () => {
+    const events = [
+      { action: 'keydown', keyCode: 13, selector: 'input.name', value: 'Alice' },
+    ]
+    const codeGenerator = new PuppeteerCodeGenerator()
+    const result = codeGenerator._parseEvents(events)
+    expect(result).toContain("await page.type('input.name', 'Alice')")
+  })
+
+  test('it generates input on focusout', () => {
+    const events = [
+      { action: 'focusout', selector: 'input.email', value: 'test@example.com' },
+    ]
+    const codeGenerator = new PuppeteerCodeGenerator()
+    const result = codeGenerator._parseEvents(events)
+    expect(result).toContain("await page.type('input.email', 'test@example.com')")
+  })
+
+  test('it dedupes Enter+focusout for same field', () => {
+    const events = [
+      { action: 'keydown', keyCode: 13, selector: 'input.city', value: 'Paris' },
+      { action: 'focusout', selector: 'input.city', value: 'Paris' },
+    ]
+    const codeGenerator = new PuppeteerCodeGenerator()
+    const result = codeGenerator._parseEvents(events)
+    const lines = result.split('\n').filter(Boolean)
+    const typeLines = lines.filter(l => l.includes("await page.type('input.city', 'Paris')"))
+    expect(typeLines.length).toBe(1)
   })
 })

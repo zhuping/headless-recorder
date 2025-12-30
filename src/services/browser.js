@@ -21,10 +21,22 @@ export default {
       chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         if (!tabs || !tabs.length) return reject(new Error('No active tab'))
         const tab = tabs[0]
-        chrome.scripting.executeScript(
-          { target: { tabId: tab.id }, files: [CONTENT_SCRIPT_PATH] },
-          res => resolve(res)
-        )
+        if (chrome.scripting && typeof chrome.scripting.executeScript === 'function') {
+          chrome.scripting.executeScript(
+            { target: { tabId: tab.id, allFrames: true }, files: [CONTENT_SCRIPT_PATH] },
+            res => resolve(res)
+          )
+        } else {
+          try {
+            if (chrome.tabs.executeScript.length === 2) {
+              chrome.tabs.executeScript({ file: CONTENT_SCRIPT_PATH }, res => resolve(res))
+            } else {
+              chrome.tabs.executeScript(tab.id, { file: CONTENT_SCRIPT_PATH }, res => resolve(res))
+            }
+          } catch (e) {
+            chrome.tabs.executeScript(tab.id, { file: CONTENT_SCRIPT_PATH }, res => resolve(res))
+          }
+        }
       })
     })
   },
@@ -49,7 +61,12 @@ export default {
   },
 
   getBackgroundBus() {
-    return chrome.runtime.connect({ name: 'recordControls' })
+    if (chrome.runtime && typeof chrome.runtime.connect === 'function') {
+      return chrome.runtime.connect({ name: 'recordControls' })
+    }
+    if (chrome.extension && typeof chrome.extension.connect === 'function') {
+      return chrome.extension.connect({ name: 'recordControls' })
+    }
   },
 
   openOptionsPage() {
