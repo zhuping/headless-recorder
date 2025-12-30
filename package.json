@@ -53,20 +53,5 @@
     "vue-cli-plugin-browser-extension": "0.25.1",
     "vue-cli-plugin-tailwind": "2.0.6"
   },
-  "pluginOptions": {
-    "browserExtension": {
-      "manifestPath": "src/manifest.json",
-      "ignore": [],
-      "componentOptions": {}
-    }
-  },
-  "vue": {
-    "pluginOptions": {
-      "browserExtension": {
-        "manifestPath": "src/manifest.json",
-        "ignore": [],
-        "componentOptions": {}
-      }
-    }
-  }
+  "pluginOptions": {}
 }
