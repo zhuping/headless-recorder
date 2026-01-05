@@ -17,6 +17,7 @@
     <Results
       :puppeteer="code"
       :playwright="codeForPlaywright"
+      :midscene="codeForMidscene"
       :options="options"
       v-if="showResultsTab"
       v-on:update:tab="currentResultTab = $event"
@@ -102,6 +103,7 @@ export default {
 
       code: '',
       codeForPlaywright: '',
+      codeForMidscene: '',
       options: defaultOptions,
     }
   },
@@ -171,11 +173,12 @@ export default {
     async generateCode() {
       const { recording, options = { code: {} } } = await storage.get(['recording', 'options'])
       const generator = new CodeGenerator(options.code)
-      const { puppeteer, playwright } = generator.generate(recording)
+      const { puppeteer, playwright, midscene } = generator.generate(recording)
 
       this.recording = recording
       this.code = puppeteer
       this.codeForPlaywright = playwright
+      this.codeForMidscene = midscene
       this.showResultsTab = true
     },
 
@@ -259,7 +262,9 @@ export default {
     },
 
     getCode() {
-      return this.currentResultTab === 'puppeteer' ? this.code : this.codeForPlaywright
+      if (this.currentResultTab === 'puppeteer') return this.code
+      if (this.currentResultTab === 'playwright') return this.codeForPlaywright
+      return this.codeForMidscene
     },
 
     run() {
